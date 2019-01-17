@@ -18,5 +18,5 @@ services:
       - ./IdeaProjects:/home/developer/IdeaProjects
       - ./.IdeaIC2018.3:/home/developer/.IdeaIC2018.3
       - ./data:/home/developer/data
+      - ./workspace:/home/developer/workspace
       - ./.java:/home/developer/.java
-
