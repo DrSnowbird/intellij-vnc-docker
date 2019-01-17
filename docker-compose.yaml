@@ -1,0 +1,22 @@
+version: '3' 
+services:
+  intellij-vnc-docker:
+    image: openkbs/intellij-vnc-docker
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: intellij-vnc-docker
+    environment:
+      - USER_ID=${USER_ID:-1000}
+      - GROUP_ID=${GROUP_ID:-1000}
+    env_file:
+      - ./.env
+    ports:
+      - 5901:5901
+      - 6901:5601
+    volumes:
+      - ./IdeaProjects:/home/developer/IdeaProjects
+      - ./.IdeaIC2018.3:/home/developer/.IdeaIC2018.3
+      - ./data:/home/developer/data
+      - ./.java:/home/developer/.java
+
