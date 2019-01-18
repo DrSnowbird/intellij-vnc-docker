@@ -24,6 +24,19 @@ This image contains [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase
 ```
 ./run.sh
 ```
+## Connect to VNC Viewer/Client or noVNC (Browser-based VNC)
+* connect via VNC viewer localhost:5901, default password: vncpassword
+* connect via noVNC HTML5 full client: http://localhost:6901/vnc.html, default password: vncpassword
+* connect via noVNC HTML5 lite client: http://localhost:6901/?password=vncpassword
+
+Once it is up, the default password is "vncpassword" to access with your web browser:
+```
+http://<ip_address>:6901/vnc.html,
+e.g.
+=> Standalone Docker: http://localhost:6901/vnc.html
+=> Openshift Container Platform: http://<route-from-openshift>/vnc.html
+=> similarly for Kubernetes Container Platform: (similar to the Openshift above!)
+```
 
 # Build
 * (Note: this image will be 5.1 GB - huge!)
