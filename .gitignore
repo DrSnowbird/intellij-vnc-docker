@@ -23,8 +23,8 @@
 hs_err_pid*
 *.tmp
 
-.IdeaIC*
-.IdeaIC*/*
+.IdealC*
+.IdealC*/*
 .java*
 .java/
 
