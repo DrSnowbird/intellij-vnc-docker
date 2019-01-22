@@ -116,15 +116,10 @@ USER ${USER}
 
 ENTRYPOINT ["/dockerstartup/vnc_startup.sh"]
 
-CMD ["--wait"]
-
 ##################################
 #### IntelliJ ####
 ##################################
 WORKDIR ${WORKSPACE}
 
-USER ${USER}
-
 CMD "${HOME}/${IDEA_INSTALL_DIR}/bin/idea.sh"
 
-#CMD "${HOME}/wrapper_process.sh"
