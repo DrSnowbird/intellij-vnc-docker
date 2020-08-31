@@ -2,13 +2,13 @@ FROM openkbs/jdk-mvn-py3-vnc
 
 MAINTAINER DrSnowbird "DrSnowbird@openkbs.org"
 
-ARG INTELLIJ_VERSION=${INTELLIJ_VERSION:-ideaIC-2018.3.3}
+ARG INTELLIJ_VERSION=${INTELLIJ_VERSION:-ideaIC-2020.2}
 ENV INTELLIJ_VERSION=${INTELLIJ_VERSION}
 
-ARG IDEA_PRODUCT_NAME=${IDEA_PRODUCT_NAME:-IdeaIC2018}
+ARG IDEA_PRODUCT_NAME=${IDEA_PRODUCT_NAME:-IdeaIC2020}
 ENV IDEA_PRODUCT_NAME=${IDEA_PRODUCT_NAME}
 
-ARG IDEA_PRODUCT_VERSION=${IDEA_PRODUCT_VERSION:-3}
+ARG IDEA_PRODUCT_VERSION=${IDEA_PRODUCT_VERSION:-2}
 ENV IDEA_PRODUCT_VERSION=${IDEA_PRODUCT_VERSION}
 
 ## -- derived vars ---
@@ -32,7 +32,7 @@ ENV HOME=/home/${USER_NAME}
 # WORKDIR ${SCALA_INSTALL_BASE}
 # # https://downloads.lightbend.com/scala/2.12.3/scala-2.12.3.tgz
 # # RUN wget -c https://downloads.lightbend.com/scala/2.12.3/scala-2.12.3.tgz && \
-# RUN wget -c https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
+# RUN wget -c --no-check-certificate https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.tgz && \
 #     tar xvf scala-${SCALA_VERSION}.tgz && \
 #     rm scala-${SCALA_VERSION}.tgz && \
 #     ls /usr/local && \
@@ -45,7 +45,7 @@ ENV HOME=/home/${USER_NAME}
 #### ---- Debian package to install ----
 #ENV SCALA_INSTALL_BASE=/usr/lib
 #WORKDIR ${SCALA_INSTALL_BASE}
-#RUN wget -c https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.deb && \
+#RUN wget -c --no-check-certificate https://downloads.lightbend.com/scala/${SCALA_VERSION}/scala-${SCALA_VERSION}.deb && \
 #    sudo apt-get install -y scala-${SCALA_VERSION}.deb && \
 #    rm scala-${SCALA_VERSION}.deb && \
 #    ls ${SCALA_INSTALL_BASE} && \
@@ -74,12 +74,12 @@ USER ${USER_NAME}
 
 WORKDIR ${HOME}
 
-# https://download.jetbrains.com/idea/ideaIC-2018.3.3-no-jdk.tar.gz
-ARG INTELLIJ_IDE_TAR=${INTELLIJ_VERSION}-no-jdk.tar.gz
+# https://download.jetbrains.com/idea/ideaIC-2020.2.tar.gz
+ARG INTELLIJ_IDE_TAR=${INTELLIJ_VERSION}.tar.gz
 ARG INTELLIJ_IDE_DOWNLOAD_FOLDER=idea
 
 ## -- (Release build) --
-RUN wget https://download.jetbrains.com/${INTELLIJ_IDE_DOWNLOAD_FOLDER}/${INTELLIJ_IDE_TAR} && \
+RUN wget --no-check-certificate https://download.jetbrains.com/${INTELLIJ_IDE_DOWNLOAD_FOLDER}/${INTELLIJ_IDE_TAR} && \
     tar xvf ${INTELLIJ_IDE_TAR} && \
     mv idea-IC-* ${IDEA_INSTALL_DIR}  && \
     rm ${INTELLIJ_IDE_TAR}

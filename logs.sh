@@ -21,25 +21,13 @@ baseDataFolder="$HOME/data-docker"
 DOCKER_IMAGE_REPO=`echo $(basename $PWD)|tr '[:upper:]' '[:lower:]'|tr "/: " "_" `
 imageTag="${ORGANIZATION}/${DOCKER_IMAGE_REPO}"
 
-###################################################
-#### ---- Mostly, you don't need change below ----
-###################################################
-function cleanup() {
-    containerID=`sudo docker ps -a|grep "${instanceName}" | awk '{print $1}'`
-    # if [ ! "`sudo docker ps -a|grep ${instanceName}`" == "" ]; then
-    if [ "${containerID}" != "" ]; then
-         sudo docker rm -f ${containerID}
-    fi
-}
-
 ## -- transform '-' and space to '_' 
 #instanceName=`echo $(basename ${imageTag})|tr '[:upper:]' '[:lower:]'|tr "/\-: " "_"`
 instanceName=`echo $(basename ${imageTag})|tr '[:upper:]' '[:lower:]'|tr "/: " "_"`
 
 echo "---------------------------------------------"
-echo "---- stop a Container for ${imageTag}"
+echo "---- Print Log for Container for ${imageTag}"
 echo "---------------------------------------------"
-
-cleanup
+sudo docker logs ${instanceName}
 
 

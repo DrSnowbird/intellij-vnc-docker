@@ -1,14 +1,14 @@
 # IntelliJ in VNC / noVNC for Container Platform (Openshift, Kubernetes, DC/OS, Mesosphere, etc) 
 [![](https://images.microbadger.com/badges/image/openkbs/intellij-vnc-docker.svg)](https://microbadger.com/images/openkbs/intellij-vnc-docker "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/openkbs/intellij-vnc-docker.svg)](https://microbadger.com/images/openkbs/intellij-vnc-docker "Get your own version badge on microbadger.com")
 
-* IntelliJ Docker in VNC/noVNC + Java 8 (1.8.0_201) JDK + Maven 3.6 + Python 3.5 + PIP3 18.1 + + npm 3.5.2 + nodejs v4.2.6 + Gradle 5.1
+* IntelliJ Docker in VNC/noVNC + Java 8 OpenJDK + Maven 3.6 + Python 3.6 + PIP3 20 + + npm 3.5.2 + nodejs v4.2.6 + Gradle 5.1
 
 # License Agreement
 By using this image, you agree the [Oracle Java JDK License](http://www.oracle.com/technetwork/java/javase/terms/license/index.html).
 This image contains [Oracle JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/index.html). You must accept the [Oracle Binary Code License Agreement for Java SE](http://www.oracle.com/technetwork/java/javase/terms/license/index.html) to use this image.
 
 # Components
-* IntelliJ Docker
+* IntelliJ Docker: IdeaIC2020
 * java version "1.8.0_201"
   Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
   Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
@@ -121,61 +121,82 @@ The above configuration will ensure all your projects created in the container's
 
 # Releases information
 ```
-root@c3fd448b277c:/usr# ./printVersions.sh 
-+ echo JAVA_HOME=/usr/java
-JAVA_HOME=/usr/java
+developer@c493e6b80032:~/workspace$ /usr/scripts/printVersions.sh 
++ echo JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
++ whereis java
+java: /usr/bin/java /usr/share/java /usr/lib/jvm/java-8-openjdk-amd64/bin/java /usr/share/man/man1/java.1.gz
++ echo
+
 + java -version
-java version "1.8.0_201"
-Java(TM) SE Runtime Environment (build 1.8.0_201-b09)
-Java HotSpot(TM) 64-Bit Server VM (build 25.201-b09, mixed mode)
+openjdk version "1.8.0_252"
+OpenJDK Runtime Environment (build 1.8.0_252-8u252-b09-1~18.04-b09)
+OpenJDK 64-Bit Server VM (build 25.252-b09, mixed mode)
 + mvn --version
-Apache Maven 3.6.0 (97c98ec64a1fdfee7767ce5ffb20918da4f719f3; 2018-10-24T18:41:47Z)
-Maven home: /usr/apache-maven-3.6.0
-Java version: 1.8.0_201, vendor: Oracle Corporation, runtime: /usr/jdk1.8.0_201/jre
-Default locale: en_US, platform encoding: ANSI_X3.4-1968
-OS name: "linux", version: "4.15.0-43-generic", arch: "amd64", family: "unix"
+Apache Maven 3.6.3 (cecedd343002696d0abb50b32b541b8a6ba2883f)
+Maven home: /usr/apache-maven-3.6.3
+Java version: 1.8.0_252, vendor: Private Build, runtime: /usr/lib/jvm/java-8-openjdk-amd64/jre
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "5.4.0-42-generic", arch: "amd64", family: "unix"
 + python -V
-Python 2.7.12
+Python 2.7.17
 + python3 -V
-Python 3.5.2
+Python 3.6.9
 + pip --version
-pip 18.1 from /usr/local/lib/python3.5/dist-packages/pip (python 3.5)
+pip 20.1.1 from /usr/local/lib/python3.6/dist-packages/pip (python 3.6)
 + pip3 --version
-pip 18.1 from /usr/local/lib/python3.5/dist-packages/pip (python 3.5)
+pip 20.1.1 from /usr/local/lib/python3.6/dist-packages/pip (python 3.6)
 + gradle --version
 
+Welcome to Gradle 6.0.1!
+
+Here are the highlights of this release:
+ - Substantial improvements in dependency management, including
+   - Publishing Gradle Module Metadata in addition to pom.xml
+   - Advanced control of transitive versions
+   - Support for optional features and dependencies
+   - Rules to tweak published metadata
+ - Support for Java 13
+ - Faster incremental Java and Groovy compilation
+ - New Zinc compiler for Scala
+ - VS2019 support
+ - Support for Gradle Enterprise plugin 3.0
+
+For more details see https://docs.gradle.org/6.0.1/release-notes.html
+
+
 ------------------------------------------------------------
-Gradle 5.1.1
+Gradle 6.0.1
 ------------------------------------------------------------
 
-Build time:   2019-01-10 23:05:02 UTC
-Revision:     3c9abb645fb83932c44e8610642393ad62116807
+Build time:   2019-11-18 20:25:01 UTC
+Revision:     fad121066a68c4701acd362daf4287a7c309a0f5
 
-Kotlin DSL:   1.1.1
-Kotlin:       1.3.11
-Groovy:       2.5.4
-Ant:          Apache Ant(TM) version 1.9.13 compiled on July 10 2018
-JVM:          1.8.0_201 (Oracle Corporation 25.201-b09)
-OS:           Linux 4.15.0-43-generic amd64
+Kotlin:       1.3.50
+Groovy:       2.5.8
+Ant:          Apache Ant(TM) version 1.10.7 compiled on September 1 2019
+JVM:          1.8.0_252 (Private Build 25.252-b09)
+OS:           Linux 5.4.0-42-generic amd64
 
-+ npm --version
-3.5.2
-+ nodejs --version
-v4.2.6
++ npm -v
+6.14.6
++ node -v
+v14.6.0
 + cat /etc/lsb-release /etc/os-release
 DISTRIB_ID=Ubuntu
-DISTRIB_RELEASE=16.04
-DISTRIB_CODENAME=xenial
-DISTRIB_DESCRIPTION="Ubuntu 16.04.3 LTS"
+DISTRIB_RELEASE=18.04
+DISTRIB_CODENAME=bionic
+DISTRIB_DESCRIPTION="Ubuntu 18.04.4 LTS"
 NAME="Ubuntu"
-VERSION="16.04.3 LTS (Xenial Xerus)"
+VERSION="18.04.4 LTS (Bionic Beaver)"
 ID=ubuntu
 ID_LIKE=debian
-PRETTY_NAME="Ubuntu 16.04.3 LTS"
-VERSION_ID="16.04"
-HOME_URL="http://www.ubuntu.com/"
-SUPPORT_URL="http://help.ubuntu.com/"
-BUG_REPORT_URL="http://bugs.launchpad.net/ubuntu/"
-VERSION_CODENAME=xenial
-UBUNTU_CODENAME=xenial
+PRETTY_NAME="Ubuntu 18.04.4 LTS"
+VERSION_ID="18.04"
+HOME_URL="https://www.ubuntu.com/"
+SUPPORT_URL="https://help.ubuntu.com/"
+BUG_REPORT_URL="https://bugs.launchpad.net/ubuntu/"
+PRIVACY_POLICY_URL="https://www.ubuntu.com/legal/terms-and-policies/privacy-policy"
+VERSION_CODENAME=bionic
+UBUNTU_CODENAME=bionic
 ```
